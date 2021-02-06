@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>MDB Webpack Starter</title>
+    <!-- Favicon -->
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    />
+    <!-- Main css file -->
+    <link rel="stylesheet" href="css/index.min.css" />
+    <!-- Custom styles -->
+    <style></style>
+  </head>
+
+  <body>
+    <!-- Start your project here-->
+    <header>
+      <h1>Book list</h1>
+      <h4>You have: <span id="booksCounter">0</span> books</h4>
+      <div class="container-filter">
+        <h4>Filter by:</h4>
+        <div class="select-filter-container">
+          <div>
+            <label for="filter-author">Author:</label>
+            <select name="filter-author" id="select-filter-author">
+              <option value="">ALL</option>
+            </select>
+          </div>
+          <div>
+            <label for="filter-genre">Genre:</label>
+            <select name="filter-genre" id="select-filter-genre">
+              <option value="">ALL</option>
+            </select>
+            <button id="reset-genres" class="btn">RESET</button>
+          </div>
+          <div>
+            <label for="filter-priority">Priority:</label>
+            <select name="filter-priority" id="select-filter-priority">
+              <option value="">ALL</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="table-container">
+        <table id="table">
+          <thead>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Priority</th>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="gencouter-container">
+        <h4>Counter:</h4>
+        <ul id="gencounter-list"></ul>
+      </div>
+    </main>
+    <form class="form">
+      <input type="text" id="input-title" placeholder="Book title..." />
+      <input type="text" id="input-author" placeholder="Author..." />
+      <div class="container-genre">
+        <select id="select-genre"></select>
+        <input type="text" id="input-new-genre" placeholder="New genre" />
+        <button id="add-genre-btn" class="btn"><i class="fas fa-plus-circle fa-lg"></i></button>
+      </div>
+      <select id="select-prior">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <button id="add-btn" class="btn">ADD</button>
+    </form>
+    <!-- End your project here-->
+  </body>
+  <!-- Main js file -->
+  <script type="text/javascript" src="js/index.min.js"></script>
+  <!-- Custom scripts -->
+  <script type="text/javascript"></script>
+</html>

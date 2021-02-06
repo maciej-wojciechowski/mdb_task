@@ -1,0 +1,257 @@
+@import '~mdb-ui-kit/css/mdb.min.css';
+
+@mixin flex($posAli, $posJust) {
+  display: flex;
+  align-items: $posAli;
+  justify-content: $posJust;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: rgb(180, 72, 58);
+  background-size: auto;
+  background: linear-gradient(
+    45deg,
+    rgba(180, 72, 58, 1) 22%,
+    rgba(253, 126, 29, 1) 82%,
+    rgba(252, 207, 69, 1) 100%
+  );
+  color: black;
+}
+
+i {
+  pointer-events: none;
+  color: rgb(32, 32, 32);
+}
+ul {
+  list-style: none;
+}
+
+select,
+input,
+button {
+  border-radius: 0.3rem;
+  border: none;
+  margin: 0 0.2rem;
+  padding: 0.2rem;
+  &:hover {
+    background: rgba(164, 255, 255, 0.712);
+  }
+  box-shadow: 7px -2px 12px -5px rgba(0, 0, 0, 0.54);
+  transition: 0.3s ease;
+}
+
+.btn {
+  background: rgb(255, 234, 234);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-align: center;
+  margin: 0;
+}
+h4 {
+  font-size: 1rem;
+}
+
+// HEADER
+header {
+  position: relative;
+  height: 20vh;
+  border-bottom: 2px solid black;
+
+  .container-filter {
+    margin: 0.5rem 0;
+    .select-filter-container {
+      margin-top: 0.2rem;
+
+      width: 90%;
+      @include flex(center, center);
+      div {
+        margin: 0 1rem;
+        @include flex(center, center);
+        button {
+          height: 1.3rem;
+          padding: 0.2rem;
+        }
+        label {
+          margin-right: 0.3rem;
+        }
+        select {
+          font-size: small;
+          padding: 0.1rem;
+        }
+      }
+    }
+  }
+}
+
+main {
+  position: relative;
+  height: 70vh;
+  @include flex(flex-start, flex-end);
+  overflow: hidden;
+  .table-container {
+    flex: 5;
+    overflow-y: scroll;
+    height: 100%;
+    @include flex(flex-start, flex-start);
+    // Table
+
+    #table {
+      width: 100%;
+      position: relative;
+
+      th {
+        cursor: pointer;
+        padding: 0.5rem;
+        &:hover {
+          transform: scale(1.05);
+          transition: 0.3s ease;
+        }
+      }
+      td {
+        padding: 0.3rem 0.5rem;
+      }
+      tr {
+        transition: 0.5s ease;
+
+        &.edit {
+          background: rgba(248, 46, 79, 0.8);
+          input,
+          select {
+            width: 100%;
+          }
+        }
+        &.hidden {
+          display: none;
+        }
+        button {
+          margin: 0.2rem;
+        }
+        .btnContainer {
+          @include flex(center, space-around);
+        }
+      }
+
+      #input-edit {
+        width: 100%;
+      }
+    }
+  }
+  .gencouter-container {
+    flex: 1;
+  }
+}
+
+.form {
+  border-top: 2px solid black;
+  font-size: large;
+  padding: 0.5rem;
+  position: sticky;
+  bottom: 0;
+  height: 10vh;
+  width: 100%;
+  @include flex(center, space-around);
+
+  input {
+    height: 100%;
+    padding: 0.5rem;
+  }
+  select {
+    height: 100%;
+  }
+  button {
+    padding: 0.5rem;
+    height: 100%;
+  }
+  #add-btn {
+    padding: 0.5rem;
+    font-size: large;
+    font-weight: bolder;
+    @include flex(center, center);
+  }
+  .container-genre {
+    height: 100%;
+    width: 20%;
+    @include flex(center, space-between);
+    overflow: hidden;
+    #input-new-genre {
+      visibility: hidden;
+      padding: 0;
+      margin: 0;
+      width: 0;
+      transition: 0.5s ease;
+      &.active {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        width: 100%;
+        height: 100%;
+        padding: 0.5rem;
+      }
+    }
+
+    #select-genre {
+      transition: 0.5s ease;
+      width: 100%;
+      &.hidden {
+        width: 0;
+        opacity: 0;
+      }
+    }
+    button {
+      width: 3rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  html {
+    font-size: 75%;
+  }
+  body {
+    background: pink;
+  }
+  header .container-filter .select-filter-container {
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    div {
+      margin-bottom: 0.2rem;
+      font-size: smaller;
+      select {
+        width: 100%;
+        padding: 0;
+        font-size: small;
+      }
+    }
+  }
+  .form {
+    font-size: small;
+    input,
+    .container-genre {
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  main {
+    background: white;
+    .table-container {
+      #table {
+        font-size: 75%;
+        td {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
