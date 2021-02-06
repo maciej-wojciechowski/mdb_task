@@ -112,8 +112,8 @@ main {
         cursor: pointer;
         padding: 0.5rem;
         &:hover {
-          transform: scale(1.05);
-          transition: 0.3s ease;
+          transform: scale(1.02);
+          transition: 0.1s ease;
         }
       }
       td {
@@ -136,7 +136,7 @@ main {
           margin: 0.2rem;
         }
         .btnContainer {
-          @include flex(center, space-around);
+          @include flex(center, center);
         }
       }
 
