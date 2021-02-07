@@ -1,11 +1,15 @@
-function filterTable(n, filter, rows, filterAut, filterGen, filterPrior) {
+function filterTable(n, rows, filterArr) {
+  const filter = filterArr[n].value;
+  const filterAut = filterArr[0];
+  const filterGen = filterArr[1];
+  const filterPrior = filterArr[2];
   if (filter === '') {
     rows.forEach((row) => {
       row.classList.remove('hidden');
     });
   } else {
     rows.forEach((row) => {
-      const filteredCol = row.querySelectorAll('td')[n];
+      const filteredCol = row.querySelectorAll('td')[n + 1];
       if (filteredCol.innerText === filter) {
         row.classList.remove('hidden');
       } else {

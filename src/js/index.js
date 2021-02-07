@@ -7,7 +7,6 @@ export default {
   mdb,
 };
 
-// --  Form and Book Counter --
 // Book counter
 const bookCounter = document.querySelector('#booksCounter');
 // Form
@@ -20,52 +19,34 @@ const addGenreBtn = document.querySelector('#add-genre-btn');
 const inputGenre = document.querySelector('#input-new-genre');
 const tableBody = document.querySelector('#table tbody');
 const rows = tableBody.children;
-// -- SORTING --
+// Sorting
 const tableHeads = document.querySelectorAll('thead th');
-// -- COUNTING GENRE BOOKS --
+// Genre Counter
 const genCouterList = document.querySelector('#gencounter-list');
 // Filtering;
 const selectFilterAuthor = document.querySelector('#select-filter-author');
 const selectFilterGenre = document.querySelector('#select-filter-genre');
 const selectFilterPriority = document.querySelector('#select-filter-priority');
+const filtersArr = [selectFilterAuthor, selectFilterGenre, selectFilterPriority];
 // -- RESETING GENRE LIST
 const resetGenresBtn = document.querySelector('#reset-genres');
 
-// Event listeners
+// -- EVENT LISTENERS --
+
+// Add, edit, table
 addButton.addEventListener('click', addNewBook);
 tableBody.addEventListener('click', deleteEdit);
 // Filtering events
 selectFilterAuthor.addEventListener('input', () => {
-  filterTable(
-    1,
-    selectFilterAuthor.value,
-    rows,
-    selectFilterAuthor,
-    selectFilterGenre,
-    selectFilterPriority
-  );
+  filterTable(0, rows, filtersArr);
 });
 selectFilterGenre.addEventListener('input', () => {
-  filterTable(
-    2,
-    selectFilterGenre.value,
-    rows,
-    selectFilterAuthor,
-    selectFilterGenre,
-    selectFilterPriority
-  );
+  filterTable(1, rows, filtersArr);
 });
 selectFilterPriority.addEventListener('input', () => {
-  filterTable(
-    3,
-    selectFilterPriority.value,
-    rows,
-    selectFilterAuthor,
-    selectFilterGenre,
-    selectFilterPriority
-  );
+  filterTable(2, rows, filtersArr);
 });
-// -- ADDING NEW GENRE --
+// Add new genre
 addGenreBtn.addEventListener('click', () => {
   inputShow(inputGenre, selectGenre, addGenreBtn);
 });
@@ -73,10 +54,15 @@ addGenreBtn.addEventListener('click', (e) => {
   addGenre(e, inputGenre, selectGenre);
   updateFilter(rows, selectFilterAuthor, selectFilterGenre, selectGenre);
 });
-
 resetGenresBtn.addEventListener('click', () => {
   resetGenres(selectGenre);
   updateFilter(rows, selectFilterAuthor, selectFilterGenre, selectGenre);
+});
+// Sorting
+tableHeads.forEach((th, index) => {
+  th.addEventListener('click', () => {
+    sortTable(index, rows);
+  });
 });
 
 // Adding new book to the list
@@ -130,12 +116,6 @@ function deleteEdit(e) {
     }
   }
 }
-// Event listeners
-tableHeads.forEach((th, index) => {
-  th.addEventListener('click', () => {
-    sortTable(index, rows);
-  });
-});
 
 // -- SAVING --
 function saveToLocal() {
@@ -184,6 +164,7 @@ function getLocal() {
   // Updating  filters
   updateFilter(rows, selectFilterAuthor, selectFilterGenre, selectGenre);
 }
+
 // Functions call
 // localStorage.clear();
 getLocal();
