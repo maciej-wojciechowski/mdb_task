@@ -4,3 +4,5 @@
 4.Editing/Deleting row by clicking button (second click to confirm edit)
 5.Add new genre by clicking button (second click to confirm edit)
 6.Reset button - resets genres
+
+https://nostalgic-jennings-53a2d6.netlify.app/
