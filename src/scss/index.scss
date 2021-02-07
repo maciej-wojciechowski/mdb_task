@@ -146,7 +146,17 @@ main {
     }
   }
   .gencouter-container {
+    h4 {
+      margin-top: 0.5rem;
+    }
     flex: 1;
+    @include flex(center, center);
+    flex-direction: column;
+    ul {
+      // @s
+      padding: 0;
+      margin-top: 1rem;
+    }
   }
 }
 
@@ -158,10 +168,12 @@ main {
   bottom: 0;
   height: 10vh;
   width: 100%;
-  @include flex(center, space-around);
+  @include flex(center, space-evenly);
 
   input {
+    flex: 5;
     height: 100%;
+    width: 100%;
     padding: 0.5rem;
   }
   select {
@@ -179,10 +191,9 @@ main {
     @include flex(center, center);
   }
   .container-genre {
+    flex: 3;
     height: 100%;
-    width: 20%;
-    @include flex(center, space-between);
-    overflow: hidden;
+    @include flex(center, center);
     #input-new-genre {
       visibility: hidden;
       padding: 0;
@@ -205,6 +216,8 @@ main {
       &.hidden {
         width: 0;
         opacity: 0;
+        padding: 0;
+        margin: 0;
       }
     }
     button {
@@ -217,9 +230,7 @@ main {
   html {
     font-size: 75%;
   }
-  body {
-    background: pink;
-  }
+
   header .container-filter {
     @include flex(center, center);
     flex-direction: column;
@@ -238,20 +249,27 @@ main {
         }
       }
     }
-    .form {
-      font-size: small;
-      input,
-      .container-genre {
+  }
+  .form {
+    .container-genre {
+      select {
         width: 100%;
-        font-size: x-small;
-        background: black;
       }
+    }
+    input,
+    select {
+      height: 100%;
+      font-size: small;
+    }
+
+    input {
+      flex: 2;
+      // width: 50%;
     }
   }
 }
 @media only screen and (max-width: 450px) {
   main {
-    background: white;
     .table-container {
       #table {
         font-size: 75%;
@@ -259,6 +277,11 @@ main {
           padding: 0;
         }
       }
+    }
+  }
+  .gencouter-container {
+    ul {
+      font-size: x-small;
     }
   }
 }
